@@ -309,6 +309,7 @@
 				EEC003CB1D3C3997009F0C20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
