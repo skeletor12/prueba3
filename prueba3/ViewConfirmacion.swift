@@ -14,19 +14,25 @@ class ViewConfirmacion: UIViewController {
     @IBOutlet weak var tamañores: UILabel!
     @IBOutlet weak var masares: UILabel!
     @IBOutlet weak var quesores: UILabel!
-    @IBOutlet weak var ingredienteres: UILabel!
+    @IBOutlet weak var ingredienteres: UITextView!
     
     var texmas = ""
     var textam = ""
     var texque = ""
-    var texing = ""
+    var ingrediente:[String:String] = [:]
     
     override func viewWillAppear(animated: Bool) {
         masares.text=String(texmas)
         tamañores.text=String(textam)
         quesores.text=String(texque)
-        ingredienteres.text=String(texing)
+        var ingredientesSelected:String = ""
+        for ingrediente1 in ingrediente.values
+        {
+            ingredientesSelected += " \(ingrediente1) "
+        }
+        self.ingredienteres.text = ingredientesSelected
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,20 +59,22 @@ class ViewConfirmacion: UIViewController {
         
         var mensaje:String = "PEDIDO CONFIRMADO...EN SU PUERTA EN MENOS DE 30 MINUTOS O ES GRATIS"
         
-        if texing == "NO ELEGISTE INGREDIENTES" {
-            mensaje = "NO PODEMOS REALIZAR TU PEDIDO DEBIDO A QUE NO ELEGISTE INGREDIENTES"
-        }
-        
         if texque == "NO ELEGISTE QUESO" {
-            mensaje = "NO PODEMOS REALIZAR TU PEDIDO DEBIDO A QUE NO ELEGISTE TIPO DE QUESO"
+            let alert = UIAlertController(title: "Aviso", message: "REGRESA PARA SELECCIONAR EL TIPO DE QUESO", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
         if texmas == "NO ELEGISTE MASA" {
-            mensaje = "NO PODEMOS REALIZAR TU PEDIDO DEBIDO A QUE NO ELEGISTE TIPO DE MASA"
+            let alert = UIAlertController(title: "Aviso", message: "REGRESA PARA SELECCIONAR EL TIPO DE MASA", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
         if textam == "NO ELEGISTE TAMAÑO" {
-            mensaje = "NO PODEMOS REALIZAR TU PEDIDO DEBIDO A QUE NO ELEGISTE TAMAÑO DE PIZZA"
+            let alert = UIAlertController(title: "Aviso", message: "REGRESA PARA SELECCIONAR EL TAMAÑO DE TU PIZZA", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
         return mensaje
