@@ -10,11 +10,11 @@ import UIKit
 
 class ViewMasa: UIViewController {
     
-
-
-    @IBOutlet weak var masa: UITextField!
     
-
+    var masa = ""
+    @IBOutlet weak var delgada: UIButton!
+    @IBOutlet weak var gruesa: UIButton!
+    @IBOutlet weak var crujiente: UIButton!
     @IBOutlet weak var tamañores: UILabel!
     
     var textam = "" 
@@ -50,7 +50,7 @@ class ViewMasa: UIViewController {
     }
     
         func imprime2()->String{
-        var texmas = String(self.masa.text!)
+        var texmas = String(masa)
             
             if texmas == "" {
                 texmas = "NO ELEGISTE MASA"
@@ -58,6 +58,32 @@ class ViewMasa: UIViewController {
             
         return texmas
     }
+    
+    
+    
+    @IBAction func delgadaSelected(sender: AnyObject) {
+        self.masa = "DELGADA"
+        delgada.backgroundColor = UIColor.blackColor()
+        gruesa.backgroundColor = UIColor.clearColor()
+        crujiente.backgroundColor = UIColor.clearColor()
+    }
+    
+    
+    @IBAction func gruesaSelected(sender: AnyObject) {
+        self.masa = "GRUESA"
+        gruesa.backgroundColor = UIColor.blackColor()
+        delgada.backgroundColor = UIColor.clearColor()
+        crujiente.backgroundColor = UIColor.clearColor()
+    }
+    
+    
+    @IBAction func crujienteSelected(sender: AnyObject) {
+        self.masa = "CRUJIENTE"
+        crujiente.backgroundColor = UIColor.blackColor()
+        gruesa.backgroundColor = UIColor.clearColor()
+        delgada.backgroundColor = UIColor.clearColor()
+    }
+    
     
 
     /*
